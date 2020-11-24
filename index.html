@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <div id="app"></div>
+    <script>
+        const obj={}
+        //1 创建一个函数
+        function defineReactive(obj,key,val){
+            //2 对参数进行拦截
+            Object.defineProperty(obj,key,{
+                get(){
+                    console.log('get'+key)
+                    return val
+                },
+                set(newVal){
+                    console.log('set'+key+','+newVal)
+                    val=newVal
+                    updated()
+                }
+            }) 
+        }
+       function updated(){
+           app.innerText=obj.foo
+       }
+        defineReactive(obj,'foo','')
+        obj.foo=new Date().toLocaleTimeString()
+        setInterval(()=>{
+            obj.foo=new Date().toLocaleTimeString()
+        },1000)
+    </script>
+  </body>
+</html>
