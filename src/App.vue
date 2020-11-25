@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <coloumn-list :list="list"></coloumn-list>
+    <colum-header :user="colmnh"></colum-header>
+    <coloumn-list :list="testData"></coloumn-list>
   </div>
 </template>
 
@@ -8,6 +9,11 @@
 import { defineComponent } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ColoumnList, { ColumnProps } from './components/ColumnList.vue'
+import ColumHeader, { UserProps } from './components/ColumHeader.vue'
+
+const colmnh: UserProps = {
+  isLogin: false
+}
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -37,11 +43,13 @@ const testData: ColumnProps[] = [
 export default defineComponent({
   name: 'App',
   components: {
-    ColoumnList
+    ColoumnList,
+    ColumHeader
   },
   setup () {
     return {
-      list: testData
+      testData,
+      colmnh
     }
   }
 
