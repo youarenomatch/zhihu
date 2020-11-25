@@ -12,7 +12,8 @@ import ColoumnList, { ColumnProps } from './components/ColumnList.vue'
 import ColumHeader, { UserProps } from './components/ColumHeader.vue'
 
 const colmnh: UserProps = {
-  isLogin: false
+  isLogin: true,
+  name: '张三'
 }
 const testData: ColumnProps[] = [
   {
